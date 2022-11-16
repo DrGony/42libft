@@ -2,7 +2,6 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int		l;
 	char	*dest;
 	int		i;
 
@@ -11,6 +10,6 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		return (NULL);
 	i = -1;
 	while (dest[++i])
-		dest = f(i, dest[i]);
+		dest = (*f)(i, dest[i]);
 	return (dest);
 }
