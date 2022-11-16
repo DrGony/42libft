@@ -6,7 +6,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	int		i;
 
 	dest = ft_strdup(s);
-	if (!dest || !s)
+	if (!dest || !s || !f)
 		return (NULL);
 	i = -1;
 	while (dest[++i])
