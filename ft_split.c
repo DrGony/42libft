@@ -6,7 +6,7 @@
 /*   By: hudelier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:47:53 by hudelier          #+#    #+#             */
-/*   Updated: 2022/11/19 10:41:53 by hudelier         ###   ########.fr       */
+/*   Updated: 2022/11/19 14:17:12 by hudelier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	**ft_split(const char *s, char c)
 		j = 0;
 		while (s && *s && *s == c)
 			s++;
-		tab[i] = malloc(sizeof(char) * (nb_letters((char *)s, c)));
+		tab[i] = malloc(sizeof(char) * (nb_letters((char *)s, c) + 1));
 		while (s && *s && *s != c)
 		{
 			tab[i][j++] = *s;
@@ -66,3 +66,20 @@ char	**ft_split(const char *s, char c)
 	tab[i] = 0;
 	return (tab);
 }
+/*
+int	main()
+{
+	char **strs;
+	int	i;
+
+	strs = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ');
+	i = 0;
+	while (strs[i])
+	{
+		puts(strs[i]);
+		free(strs[i]);
+		i++;
+	}
+	free(strs);
+	return (0);
+}*/

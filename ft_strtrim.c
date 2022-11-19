@@ -6,7 +6,7 @@
 /*   By: hudelier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:34:25 by hudelier          #+#    #+#             */
-/*   Updated: 2022/11/15 13:34:33 by hudelier         ###   ########.fr       */
+/*   Updated: 2022/11/19 14:37:25 by hudelier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	l = count_up(s1, set);
 	if (s1[l] == '\0')
-		return (NULL);
+		return (ft_strdup(""));
 	t = count_down(s1, set, l);
 	dest = malloc(sizeof(char) * (t - l + 2));
 	if (!dest)
