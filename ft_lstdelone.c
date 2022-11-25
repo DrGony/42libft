@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hudelier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/25 08:01:17 by hudelier          #+#    #+#             */
-/*   Updated: 2022/11/25 08:01:19 by hudelier         ###   ########.fr       */
+/*   Created: 2022/11/25 08:52:03 by hudelier          #+#    #+#             */
+/*   Updated: 2022/11/25 09:25:00 by hudelier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
 	if (!lst || !del)
 		return ;
-	(*del)(lst->content);
+	del(lst->content);
 	free(lst);
 }
