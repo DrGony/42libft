@@ -6,7 +6,7 @@
 /*   By: hudelier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:56:18 by hudelier          #+#    #+#             */
-/*   Updated: 2022/11/15 11:49:48 by hudelier         ###   ########.fr       */
+/*   Updated: 2022/11/29 11:33:38 by hudelier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	l2;
 	char	*dest;
 
+	if (!s1 || !s2)
+		return (NULL);
 	l1 = ft_strlen(s1);
 	l2 = ft_strlen(s2);
 	dest = malloc(sizeof(char) * (l1 + l2 +1));

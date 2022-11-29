@@ -6,7 +6,7 @@
 /*   By: hudelier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 10:00:17 by hudelier          #+#    #+#             */
-/*   Updated: 2022/11/19 10:00:19 by hudelier         ###   ########.fr       */
+/*   Updated: 2022/11/29 12:01:07 by hudelier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
 
+	if (!s || !fd)
+		return ;
 	i = -1;
 	while (s[++i])
 		ft_putchar_fd(s[i], fd);

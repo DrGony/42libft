@@ -6,7 +6,7 @@
 /*   By: hudelier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:24:07 by hudelier          #+#    #+#             */
-/*   Updated: 2022/11/19 14:09:32 by hudelier         ###   ########.fr       */
+/*   Updated: 2022/11/29 11:30:00 by hudelier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t			ltot;
 
 	l = 0;
+	if (!s && !start)
+		return (NULL);
 	while (s[l])
 		l++;
 	if (l < start)

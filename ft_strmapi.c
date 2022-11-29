@@ -6,7 +6,7 @@
 /*   By: hudelier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 09:59:36 by hudelier          #+#    #+#             */
-/*   Updated: 2022/11/19 09:59:38 by hudelier         ###   ########.fr       */
+/*   Updated: 2022/11/29 11:37:33 by hudelier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*dest;
 	int		i;
 
+	if (!s)
+		return (NULL);
 	dest = ft_strdup(s);
-	if (!dest || !s || !f)
+	if (!dest || !f)
 		return (NULL);
 	i = -1;
 	while (dest[++i])

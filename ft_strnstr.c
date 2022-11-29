@@ -6,7 +6,7 @@
 /*   By: hudelier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 14:32:44 by hudelier          #+#    #+#             */
-/*   Updated: 2022/11/11 14:50:31 by hudelier         ###   ########.fr       */
+/*   Updated: 2022/11/29 11:25:31 by hudelier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	l;
 
 	b = 0;
+	if ((!big && !len) || (!little && !len))
+		return (NULL);
 	if (little[0] == '\0')
 		return ((char *)big);
 	while (big[b] != '\0')
