@@ -5,64 +5,77 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hudelier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 13:47:53 by hudelier          #+#    #+#             */
-/*   Updated: 2022/11/25 08:00:21 by hudelier         ###   ########.fr       */
+/*   Created: 2023/01/09 16:16:42 by hudelier          #+#    #+#             */
+/*   Updated: 2023/01/09 16:22:53 by hudelier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-int	nb_w(char *s, char c)
+static void	*my_free(char **sentence, int index)
+{
+	while (index >= 0)
+		free(sentence[index++]);
+	return (NULL);
+}
+
+static int	is_separator(char s, char c)
+{
+	if (s == c)
+		return (1);
+	return (0);
+}
+
+static int	word_counter(const char *s, const char c)
 {
 	int	words;
 
 	words = 0;
-	while (s && *s && *s == c)
+	while (s && *s && is_separator(*s, c))
 		s++;
-	if (s && *s && *s != c)
+	if (s && *s && !is_separator(*s, c))
 		words++;
-	while (s && *s && *s != c)
+	while (s && *s && !is_separator(*s, c))
 		s++;
-	if (s && *s && *s == c)
-		words += nb_w(s, c);
+	if (s && *s && is_separator(*s, c))
+		words += word_counter(s, c);
 	return (words);
 }
 
-int	nb_letters(char *s, char c)
+static int	char_counter(const char *s, char c)
 {
-	int	letters;
+	int	letter;
 
-	letters = 0;
-	while (s && s[letters] && s[letters] != c)
-		letters++;
-	return (letters);
+	letter = 0;
+	while (s[letter] && !is_separator(s[letter], c))
+		letter++;
+	return (letter);
 }
 
-char	**ft_split(const char *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char	**tab;
-	int		j;
+	int		nbr_word;
+	char	**sentence;
 	int		i;
-	int		words;
+	int		y;
 
+	nbr_word = word_counter(s, c);
+	sentence = (char **)malloc((nbr_word + 1) * sizeof(char *));
+	if (!sentence)
+		return (NULL);
 	i = -1;
-	words = nb_w((char *)s, c);
-	tab = malloc(sizeof(char *) * (words + 1));
-	if (!s || !tab)
-		return (0);
-	while (++i < words)
+	while (++i < nbr_word)
 	{
-		j = 0;
-		while (s && *s && *s == c)
+		while (is_separator(*s, c))
 			s++;
-		tab[i] = malloc(sizeof(char) * (nb_letters((char *)s, c) + 1));
-		while (s && *s && *s != c)
-		{
-			tab[i][j++] = *s;
-			s++;
-		}
-		tab[i][j] = 0;
+		sentence[i] = malloc((char_counter(s, c) + 1) * sizeof(char));
+		if (!sentence[i])
+			return (my_free(sentence, i));
+		y = 0;
+		while (*s && !is_separator(*s, c))
+			sentence[i][y++] = *s++;
+		sentence[i][y] = '\0';
 	}
-	tab[i] = 0;
-	return (tab);
+	sentence[i] = 0;
+	return (sentence);
 }

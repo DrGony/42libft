@@ -6,7 +6,7 @@
 #    By: hudelier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/19 10:09:29 by hudelier          #+#    #+#              #
-#    Updated: 2022/11/29 11:08:23 by hudelier         ###   ########.fr        #
+#    Updated: 2023/01/09 16:25:46 by hudelier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,9 +47,5 @@ fclean:		clean
 		$(RM) $(NAME)
 
 re:		fclean $(NAME)
-
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS) $(BONUS_S)
-	gcc -nostartfiles -shared -o libft.so $(OBJS) $(OBJSbonus)
 
 .PHONY:		all clean fclean re bonus
